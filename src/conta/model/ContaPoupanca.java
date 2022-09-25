@@ -9,11 +9,11 @@ public class ContaPoupanca extends Conta{
 		this.aniversario = aniversario;
 	}
 
-	public int getaniversario() {
+	public int getAniversario() {
 		return aniversario;
 	}
 
-	public void setaniversario(int aniversario) {
+	public void setAniversario(int aniversario) {
 		this.aniversario = aniversario;
 	}
 	

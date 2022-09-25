@@ -11,9 +11,6 @@ public interface ContaRepository {
 	public void atualizar(Conta conta);
 	public void deletar(int numero);
 	
-	// Encontrar a conta na Collection
-	public Conta buscarNaCollection(int numero);
-	
 	// Métodos Bancários
 	public void sacar(int numero, float valor);
 	public void depositar(int numero, float valor);

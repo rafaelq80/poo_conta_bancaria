@@ -13,6 +13,23 @@ public class ContaController implements ContaRepository{
 		this.listaContas = new ArrayList<Conta>();
 	}
 	
+	/**
+	 * Métodos do CRUD
+	 * */
+	@Override
+	public void cadastrar(Conta conta) {
+		conta.setNumero(gerarNumero());
+		listaContas.add(conta);
+		System.out.println("\nA Conta número: " + conta.getNumero() + " foi criada com sucesso!");
+	}
+	
+	@Override
+	public void listarTodas() {
+		for (var conta : listaContas) {
+			conta.visualizar();
+		}
+	}
+		
 	@Override
 	public void procurarPorNumero(int numero) {
 		var conta = buscarNaCollection(numero);
@@ -21,20 +38,6 @@ public class ContaController implements ContaRepository{
 			conta.visualizar();
 		else
 			System.out.println("\nA Conta número: " + numero + " não foi encontrada!");
-	}
-
-	@Override
-	public void listarTodas() {
-		for (var conta : listaContas) {
-			conta.visualizar();
-		}
-	}
-
-	@Override
-	public void cadastrar(Conta conta) {
-		conta.setNumero(gerarNumero());
-		listaContas.add(conta);
-		System.out.println("\nA Conta número: " + conta.getNumero() + " foi criada com sucesso!");
 	}
 
 	@Override
@@ -59,30 +62,9 @@ public class ContaController implements ContaRepository{
 			System.out.println("\nA Conta numero: " + numero + " não foi encontrada!");		
 	}
 	
-	public int gerarNumero() {
-		return listaContas.size() + 1;
-	}
-
-	@Override
-	public Conta buscarNaCollection(int numero) {
-		for (var conta : listaContas) {
-			if (conta.getNumero() == numero) {
-				return conta;
-			}
-		}
-		
-		return null;
-	}
-
-	public int retornaTipo(int numero) {
-		for (var conta : listaContas) {
-			if (conta.getNumero() == numero) {
-				return conta.getTipo();
-			}
-		}
-		
-		return 0;
-	}
+	/**
+	 * Métodos Bancários
+	 * */
 	
 	@Override
 	public void sacar(int numero, float valor) {
@@ -129,4 +111,41 @@ public class ContaController implements ContaRepository{
 			System.out.println("\nA Conta de Origem e/ou Destino não foram encontradas!");
 	}
 
+	/** 
+	 * Métodos Auxiliares
+	 **/
+	
+	/**
+	 * Método para gerar automaticamente o Número da Conta
+	 * */
+	public int gerarNumero() {
+		return listaContas.size() + 1;
+	}
+
+	/**
+	 * Método para buscar a Conta na Collection
+	 * */
+	public Conta buscarNaCollection(int numero) {
+		for (var conta : listaContas) {
+			if (conta.getNumero() == numero) {
+				return conta;
+			}
+		}
+		
+		return null;
+	}
+
+	/**
+	 * Método para retornar o Tipo da Conta
+	 * */
+	public int retornaTipo(int numero) {
+		for (var conta : listaContas) {
+			if (conta.getNumero() == numero) {
+				return conta.getTipo();
+			}
+		}
+		
+		return 0;
+	}
+	
 }
