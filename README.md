@@ -1,4 +1,4 @@
-# Projeto Conta Bancária - POO (Em desenvolvimento)
+# Projeto Conta Bancária - Java
 
 <br />
 
